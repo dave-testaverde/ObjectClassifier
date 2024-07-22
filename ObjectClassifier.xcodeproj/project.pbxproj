@@ -10,6 +10,9 @@
 		553CEE272C35AB3E00EDEBFC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE262C35AB3E00EDEBFC /* CameraView.swift */; };
 		553CEE822C37414F00EDEBFC /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE812C37414F00EDEBFC /* Camera.swift */; };
 		553CEE842C3741E800EDEBFC /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE832C3741E800EDEBFC /* Classifier.swift */; };
+		55C2D3542C4E6FB200C14B35 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C2D3532C4E6FB200C14B35 /* CameraService.swift */; };
+		55C2D3562C4E707F00C14B35 /* StreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C2D3552C4E707F00C14B35 /* StreamView.swift */; };
+		55C2D3592C4E89A500C14B35 /* StreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C2D3582C4E89A500C14B35 /* StreamViewModel.swift */; };
 		A9939458265BCD8900D7B90F /* ObjectClassifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9939457265BCD8900D7B90F /* ObjectClassifierApp.swift */; };
 		A993945A265BCD8900D7B90F /* VersionIssuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9939459265BCD8900D7B90F /* VersionIssuesView.swift */; };
 		A993945C265BCD8B00D7B90F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A993945B265BCD8B00D7B90F /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 		553CEE262C35AB3E00EDEBFC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		553CEE812C37414F00EDEBFC /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		553CEE832C3741E800EDEBFC /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		55C2D3532C4E6FB200C14B35 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		55C2D3552C4E707F00C14B35 /* StreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamView.swift; sourceTree = "<group>"; };
+		55C2D3582C4E89A500C14B35 /* StreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewModel.swift; sourceTree = "<group>"; };
 		A9939454265BCD8900D7B90F /* ObjectClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9939457265BCD8900D7B90F /* ObjectClassifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectClassifierApp.swift; sourceTree = "<group>"; };
 		A9939459265BCD8900D7B90F /* VersionIssuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionIssuesView.swift; sourceTree = "<group>"; };
@@ -46,6 +52,7 @@
 		553CEE252C35AB2E00EDEBFC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55C2D3552C4E707F00C14B35 /* StreamView.swift */,
 				553CEE262C35AB3E00EDEBFC /* CameraView.swift */,
 				A9939459265BCD8900D7B90F /* VersionIssuesView.swift */,
 			);
@@ -60,6 +67,31 @@
 				A9939468265BD2A400D7B90F /* UIImage+Extension.swift */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		55C2D3512C4E6F9300C14B35 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				55C2D3572C4E899100C14B35 /* ViewModel */,
+				55C2D3522C4E6F9D00C14B35 /* Service */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		55C2D3522C4E6F9D00C14B35 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				55C2D3532C4E6FB200C14B35 /* CameraService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		55C2D3572C4E899100C14B35 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55C2D3582C4E89A500C14B35 /* StreamViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A993944B265BCD8900D7B90F = {
@@ -81,6 +113,7 @@
 		A9939456265BCD8900D7B90F /* ObjectClassifier */ = {
 			isa = PBXGroup;
 			children = (
+				55C2D3512C4E6F9300C14B35 /* App */,
 				553CEE802C3740A600EDEBFC /* Tool */,
 				553CEE252C35AB2E00EDEBFC /* View */,
 				A9939457265BCD8900D7B90F /* ObjectClassifierApp.swift */,
@@ -169,9 +202,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C2D3592C4E89A500C14B35 /* StreamViewModel.swift in Sources */,
+				55C2D3542C4E6FB200C14B35 /* CameraService.swift in Sources */,
 				553CEE842C3741E800EDEBFC /* Classifier.swift in Sources */,
 				A9939467265BCF2100D7B90F /* MobileNetV2.mlmodel in Sources */,
 				553CEE272C35AB3E00EDEBFC /* CameraView.swift in Sources */,
+				55C2D3562C4E707F00C14B35 /* StreamView.swift in Sources */,
 				553CEE822C37414F00EDEBFC /* Camera.swift in Sources */,
 				A993945A265BCD8900D7B90F /* VersionIssuesView.swift in Sources */,
 				A9939458265BCD8900D7B90F /* ObjectClassifierApp.swift in Sources */,
@@ -308,7 +344,7 @@
 				DEVELOPMENT_TEAM = 5H5A53D8C4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ObjectClassifier/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,7 +366,7 @@
 				DEVELOPMENT_TEAM = 5H5A53D8C4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ObjectClassifier/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

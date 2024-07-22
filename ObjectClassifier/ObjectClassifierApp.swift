@@ -12,11 +12,7 @@ import CoreML
 struct ObjectClassifierApp: App {
     var body: some Scene {
         WindowGroup {
-            if #available(iOS 17.0, *) {
-                CameraView()
-            } else {
-                VersionIssuesView()
-            }
+            StreamViewView()
         }
     }
 }

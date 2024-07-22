@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-func classifyImage(img: UIImage?, model: MobileNetV2, cameraView: CameraView) {
+func classifyImage(img: UIImage?, model: MobileNetV2, cameraView: CameraView?) {
     guard let image = img,
           let resizedImage = image.resizeImageTo(size:CGSize(width: 224, height: 224)),
           let buffer = resizedImage.convertToBuffer() else {
@@ -23,6 +23,6 @@ func classifyImage(img: UIImage?, model: MobileNetV2, cameraView: CameraView) {
             return "\(key) = \(String(format: "%.2f", value * 100))%"
         }.joined(separator: "\n")
         
-        cameraView.updateNetResultLabel(label: result) 
+        cameraView!.updateNetResultLabel(label: result)
     }
 }
