@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  StreamViewModel.swift
 //  ObjectClassifier
 //
 //  Created by Dave on 22/07/24.
@@ -10,12 +10,13 @@ import UIKit
 
 @Observable
 class StreamViewModel {
-    
     var netResultLabel: String
     var cameraService: CameraService
+    var resultLabel: String
     
     init(cameraService: CameraService) {
-        self.netResultLabel = "Detection..."
+        self.netResultLabel = ""
+        self.resultLabel = "Detection..."
         self.cameraService = cameraService
     }
     
@@ -34,7 +35,7 @@ class StreamViewModel {
             guard let resultFirst = results.first else { return }
             
             self.netResultLabel = "\(resultFirst.key) = \(String(format: "%.2f", resultFirst.value * 100))%"
-            print(self.netResultLabel)
+            //print(self.netResultLabel)
         }
     }
     

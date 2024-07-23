@@ -10,6 +10,7 @@
 		553CEE272C35AB3E00EDEBFC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE262C35AB3E00EDEBFC /* CameraView.swift */; };
 		553CEE822C37414F00EDEBFC /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE812C37414F00EDEBFC /* Camera.swift */; };
 		553CEE842C3741E800EDEBFC /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE832C3741E800EDEBFC /* Classifier.swift */; };
+		55619D5B2C4FFC5F007D52A9 /* Translater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55619D5A2C4FFC5F007D52A9 /* Translater.swift */; };
 		55C2D3542C4E6FB200C14B35 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C2D3532C4E6FB200C14B35 /* CameraService.swift */; };
 		55C2D3562C4E707F00C14B35 /* StreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C2D3552C4E707F00C14B35 /* StreamView.swift */; };
 		55C2D3592C4E89A500C14B35 /* StreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C2D3582C4E89A500C14B35 /* StreamViewModel.swift */; };
@@ -25,6 +26,7 @@
 		553CEE262C35AB3E00EDEBFC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		553CEE812C37414F00EDEBFC /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		553CEE832C3741E800EDEBFC /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		55619D5A2C4FFC5F007D52A9 /* Translater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translater.swift; sourceTree = "<group>"; };
 		55C2D3532C4E6FB200C14B35 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
 		55C2D3552C4E707F00C14B35 /* StreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamView.swift; sourceTree = "<group>"; };
 		55C2D3582C4E89A500C14B35 /* StreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewModel.swift; sourceTree = "<group>"; };
@@ -69,9 +71,18 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		55619D592C4FFC38007D52A9 /* MLTraslate */ = {
+			isa = PBXGroup;
+			children = (
+				55619D5A2C4FFC5F007D52A9 /* Translater.swift */,
+			);
+			path = MLTraslate;
+			sourceTree = "<group>";
+		};
 		55C2D3512C4E6F9300C14B35 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				55619D592C4FFC38007D52A9 /* MLTraslate */,
 				55C2D3572C4E899100C14B35 /* ViewModel */,
 				55C2D3522C4E6F9D00C14B35 /* Service */,
 			);
@@ -207,6 +218,7 @@
 				553CEE842C3741E800EDEBFC /* Classifier.swift in Sources */,
 				A9939467265BCF2100D7B90F /* MobileNetV2.mlmodel in Sources */,
 				553CEE272C35AB3E00EDEBFC /* CameraView.swift in Sources */,
+				55619D5B2C4FFC5F007D52A9 /* Translater.swift in Sources */,
 				55C2D3562C4E707F00C14B35 /* StreamView.swift in Sources */,
 				553CEE822C37414F00EDEBFC /* Camera.swift in Sources */,
 				A993945A265BCD8900D7B90F /* VersionIssuesView.swift in Sources */,

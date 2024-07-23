@@ -12,6 +12,7 @@ struct StreamViewView: View {
     let model = MobileNetV2()
     
     @State var viewModel = StreamViewModel(cameraService: CameraService())
+    var traslater = Translater()
     
     var body: some View {
         @Bindable var viewModel = viewModel
@@ -24,7 +25,7 @@ struct StreamViewView: View {
                         .scaledToFill()
                         .frame(maxWidth:.infinity, maxHeight: 800)
                         .ignoresSafeArea()
-                    Text(viewModel.netResultLabel)
+                    Text(viewModel.resultLabel)
                         .padding(.all, 12)
                         .font(.system(size: 13))
                         .foregroundColor(.white)
@@ -33,6 +34,7 @@ struct StreamViewView: View {
                 }.onAppear(perform: {
                     Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                         viewModel.classify(model: model)
+                        traslater.translate(viewModel: viewModel)
                     }
                 })
             } else {
