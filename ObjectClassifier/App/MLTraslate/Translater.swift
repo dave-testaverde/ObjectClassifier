@@ -6,16 +6,19 @@
 //
 
 import Foundation
-
 import MLKit
 
+@Observable
 class Translater {
     let options: TranslatorOptions
     let translator: Translator
 
     let conditions : ModelDownloadConditions
     
-    var languageTarget: TranslateLanguage = .italian
+    var languageTarget: TranslateLanguage
+    var langTargetLabel: String = "english"
+    
+    var availableLangs: [String: TranslateLanguage] = [:]
         
     init(){
         self.options = TranslatorOptions(sourceLanguage: .english, targetLanguage: .spanish)
@@ -24,6 +27,22 @@ class Translater {
             allowsCellularAccess: false,
             allowsBackgroundDownloading: true
         )
+        self.languageTarget = .spanish
+        
+        initAvailableLanguages()
+    }
+    
+    func initAvailableLanguages(){
+        self.availableLangs = [
+            "spanish" : .spanish,
+            "german" : .german,
+            "french" : .french,
+            "english" : .english,
+            "chinese" : .chinese,
+            "russian" : .russian,
+            "romanian" : .romanian,
+            "japanese" : .japanese
+        ]
     }
     
     func translate(viewModel: StreamViewModel){
