@@ -33,29 +33,41 @@ struct StreamViewView: View {
                     Image(decorative: frame, scale: 1, orientation: .right)
                         .resizable()
                         .scaledToFill()
-                        .frame(maxWidth:.infinity, maxHeight: 700)
+                        .frame(maxWidth:.infinity, maxHeight: 760)
                         .ignoresSafeArea()
-                    Picker("Languages", selection: $selectedLang) {
-                        ForEach(availableLang, id: \.self) { lang in
-                            Text(lang)
+                    Menu {
+                        Picker("Languages", selection: $translater.langTargetLabel) {
+                            ForEach(availableLang, id: \.self) { lang in
+                                Text(lang)
+                            }
                         }
-                    }.onChange(of: selectedLang) { oldValue, newValue in
-                        print("switch lang from \(oldValue) to \(newValue)")
-                    }.padding(.top, 15)
+                    } label: {
+                        Text(translater.langTargetLabel)
+                            .padding(.all, 12)
+                            .font(.system(size: 13))
+                            .foregroundColor(.white)
+                            .background(.blue)
+                            .cornerRadius(20)
+                    }
+                    .id(translater.langTargetLabel)
                     Text(viewModel.resultLabel)
                         .padding(.all, 12)
                         .font(.system(size: 13))
                         .foregroundColor(.white)
-                        .background( .green )
+                        .background(.green)
                         .cornerRadius(20)
-                        .padding(.top, 10)
+                        .padding(.bottom, 8)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
                 .onAppear(perform: {
                     Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                         viewModel.classify(model: model)
-                        translater.translate(viewModel: viewModel)
+                        if(translater.languageTarget != .english){
+                            translater.translate(viewModel: viewModel)
+                        } else {
+                            viewModel.resultLabel = viewModel.netResultLabel
+                        }
                     }
                 })
             } else {
@@ -64,7 +76,7 @@ struct StreamViewView: View {
                 }
             }
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
         .onDisappear(perform: {
             viewModel.cameraService.stopSession()

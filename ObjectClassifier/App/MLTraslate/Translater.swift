@@ -10,49 +10,68 @@ import MLKit
 
 @Observable
 class Translater {
-    let options: TranslatorOptions
-    let translator: Translator
+    var options: TranslatorOptions
+    var translator: Translator?
 
-    let conditions : ModelDownloadConditions
+    var conditions : ModelDownloadConditions
     
     var languageTarget: TranslateLanguage
-    var langTargetLabel: String = "english"
+    var langTargetLabel: String = "english" {
+        willSet {
+            print("From \(langTargetLabel) to \(newValue)")
+        }
+        didSet {
+            syncLanguageTarget()
+        }
+    }
     
     var availableLangs: [String: TranslateLanguage] = [:]
         
     init(){
         self.options = TranslatorOptions(sourceLanguage: .english, targetLanguage: .spanish)
-        self.translator = Translator.translator(options: options)
         self.conditions = ModelDownloadConditions(
             allowsCellularAccess: false,
             allowsBackgroundDownloading: true
         )
-        self.languageTarget = .spanish
-        
+        self.languageTarget = .english
         initAvailableLanguages()
+    }
+    
+    func configLang(){
+        self.options = TranslatorOptions(sourceLanguage: .english, targetLanguage: self.languageTarget)
+        self.translator = Translator.translator(options: options)
+    }
+    
+    func syncLanguageTarget(){
+        if(self.availableLangs.contains(where: { $0.key == self.langTargetLabel })){
+            print(self.availableLangs[langTargetLabel]!)
+            self.languageTarget = self.availableLangs[langTargetLabel]!
+            self.configLang()
+        }
     }
     
     func initAvailableLanguages(){
         self.availableLangs = [
-            "spanish" : .spanish,
+            "greek" : .greek,
             "german" : .german,
             "french" : .french,
+            "spanish" : .spanish,
             "english" : .english,
             "chinese" : .chinese,
             "russian" : .russian,
-            "romanian" : .romanian,
-            "japanese" : .japanese
         ]
     }
     
     func translate(viewModel: StreamViewModel){
-        translator.downloadModelIfNeeded(with: conditions) { [self] error in
+        self.translator = Translator.translator(options: options)
+        
+        translator!.downloadModelIfNeeded(with: conditions) { [self] error in
             guard error == nil else { return }
 
-            translator.translate(viewModel.netResultLabel) { translatedText, error in
+            translator!.translate(viewModel.netResultLabel) { translatedText, error in
                 guard error == nil, let translatedText = translatedText
                 else {
-                    print(error)
+                    print(error as Any)
                     return
                 }
                 viewModel.resultLabel = translatedText

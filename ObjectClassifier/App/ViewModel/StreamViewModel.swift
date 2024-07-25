@@ -35,7 +35,6 @@ class StreamViewModel {
             guard let resultFirst = results.first else { return }
             
             self.netResultLabel = "\(resultFirst.key) = \(String(format: "%.2f", resultFirst.value * 100))%"
-            //print(self.netResultLabel)
         }
     }
     
