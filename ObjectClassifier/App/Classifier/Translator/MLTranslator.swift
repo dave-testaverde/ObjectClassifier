@@ -9,14 +9,18 @@ import Foundation
 import MLKit
 
 @Observable
-class Translater {
+class MLTranslator {
+    
+    static let langNet: TranslateLanguage = .english
+    static let langNetLabel: String = "english"
+    
     var options: TranslatorOptions
     var translator: Translator?
 
     var conditions : ModelDownloadConditions
     
     var languageTarget: TranslateLanguage
-    var langTargetLabel: String = "english" {
+    var langTargetLabel: String = langNetLabel {
         willSet {
             print("From \(langTargetLabel) to \(newValue)")
         }
