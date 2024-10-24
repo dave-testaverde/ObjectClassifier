@@ -60,7 +60,7 @@ struct StreamViewView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
-                .onAppear(perform: {
+                /*.onAppear(perform: {
                     Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                         viewModel.classify(model: model)
                         if(translator.languageTarget != MLTranslator.langNet){
@@ -69,7 +69,15 @@ struct StreamViewView: View {
                             viewModel.resultLabel = viewModel.netResultLabel
                         }
                     }
-                })
+                })*/
+                .onReceive(viewModel.currentTimePublisher) { newCurrentTime in
+                    viewModel.classify(model: model)
+                    if(translator.languageTarget != MLTranslator.langNet){
+                        translator.translate(viewModel: viewModel)
+                    } else {
+                        viewModel.resultLabel = viewModel.netResultLabel
+                    }
+                }
             } else {
                 VStack{
                     ProgressView()

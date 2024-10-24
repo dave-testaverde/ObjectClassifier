@@ -8,16 +8,27 @@
 import Foundation
 import UIKit
 
+import Combine
+
 @Observable
 class StreamViewModel {
     var netResultLabel: String
     var cameraService: CameraService
     var resultLabel: String
     
+    let currentTimePublisher = Timer.TimerPublisher(interval: 1.0, runLoop: .main, mode: .default)
+    var cancellable: AnyCancellable?
+    
     init(cameraService: CameraService) {
         self.netResultLabel = ""
         self.resultLabel = "Detection..."
         self.cameraService = cameraService
+        
+        startTicker()
+    }
+    
+    deinit {
+        stopTicker()
     }
     
     func classify(model: MobileNetV2) {
@@ -36,6 +47,14 @@ class StreamViewModel {
             
             self.netResultLabel = "\(resultFirst.key) = \(String(format: "%.2f", resultFirst.value * 100))%"
         }
+    }
+    
+    func startTicker() {
+        self.cancellable = currentTimePublisher.connect() as? AnyCancellable
+    }
+    
+    func stopTicker() {
+        self.cancellable?.cancel()
     }
     
 }
