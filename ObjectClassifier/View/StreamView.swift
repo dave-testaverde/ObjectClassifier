@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 import MLKit
 
 struct StreamViewView: View {
@@ -60,17 +59,7 @@ struct StreamViewView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
-                /*.onAppear(perform: {
-                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                        viewModel.classify(model: model)
-                        if(translator.languageTarget != MLTranslator.langNet){
-                            translator.translate(viewModel: viewModel)
-                        } else {
-                            viewModel.resultLabel = viewModel.netResultLabel
-                        }
-                    }
-                })*/
-                .onReceive(viewModel.currentTimePublisher) { newCurrentTime in
+                .onReceive(viewModel.currentTimePublisher) { tick in
                     viewModel.classify(model: model)
                     if(translator.languageTarget != MLTranslator.langNet){
                         translator.translate(viewModel: viewModel)
